@@ -1,10 +1,14 @@
 import axios from 'axios';
+import { getApiConfig } from '../utils/config';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+// Get API configuration
+const apiConfig = getApiConfig();
 
 // Create axios instance with default config
 const scholarshipApi = axios.create({
-  baseURL: `${API_BASE_URL}/api/scholarships`,
+  baseURL: apiConfig.isDemoMode 
+    ? 'https://jsonplaceholder.typicode.com/posts' // Demo endpoint
+    : `${apiConfig.originalUrl}/api/scholarships`,
   headers: {
     'Content-Type': 'application/json',
   },

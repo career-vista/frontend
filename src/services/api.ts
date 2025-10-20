@@ -1,8 +1,15 @@
 import axios, { AxiosError } from 'axios'
+import { getApiConfig, showDemoModeWarning } from '../utils/config'
+
+// Get API configuration
+const apiConfig = getApiConfig()
+
+// Show demo mode warning if applicable
+showDemoModeWarning()
 
 // Create axios instance with base URL
 const api = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api`,
+  baseURL: apiConfig.baseURL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -25,6 +32,17 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   async (error: AxiosError) => {
+    // Handle network/connection errors gracefully
+    if (!error.response) {
+      console.warn('🌐 API connection failed. Running in offline/demo mode.')
+      // You could return mock data here for demo purposes
+      return Promise.reject({
+        ...error,
+        message: 'API unavailable - running in demo mode',
+        isOffline: true
+      })
+    }
+
     // Handle token expiration
     if (error.response?.status === 401) {
       localStorage.removeItem('token')

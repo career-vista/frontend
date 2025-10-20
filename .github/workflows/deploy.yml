@@ -50,7 +50,9 @@ jobs:
           pnpm run build
         env:
           # Add your production environment variables here
-          VITE_API_URL: ${{ secrets.VITE_API_URL || 'https://your-production-api.com' }}
+          # Note: GitHub Pages (HTTPS) cannot connect to localhost HTTP APIs
+          # You need either a production HTTPS API or use a demo/mock API
+          VITE_API_URL: ${{ secrets.VITE_API_URL || 'https://jsonplaceholder.typicode.com' }}
           VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
           
       - name: Upload artifact

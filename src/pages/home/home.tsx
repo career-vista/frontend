@@ -11,9 +11,9 @@ import {
   Fade,
   Slide,
   Zoom,
-  Avatar,
   Rating,
 } from '@mui/material';
+import SafeAvatar from '../../components/SafeAvatar';
 import {
   School,
   TrendingUp,
@@ -114,7 +114,7 @@ const Home: React.FC = () => {
     {
       name: 'Sai Krishna Reddy',
       role: 'Class 10 Student, Government High School, Vijayawada',
-      avatar: '/avatars/saikrishna.jpg',
+      avatar: `${import.meta.env.BASE_URL}avatars/saikrishna.jpg`,
       rating: 5,
       text: 'After completing my SSC, I was totally confused between MPC and BiPC streams. CareerVista\'s 50-question adaptive test helped me understand my strengths and interests. Now I\'m confident about choosing MPC for my intermediate!',
       college: 'Choosing Intermediate College',
@@ -123,7 +123,7 @@ const Home: React.FC = () => {
     {
       name: 'Lakshmi Prasanna',
       role: 'Class 10 Student, Narayana School, Guntur',
-      avatar: '/avatars/lakshmi.jpg',
+      avatar: `${import.meta.env.BASE_URL}avatars/lakshmi.jpg`,
       rating: 5,
       text: 'I was scared about choosing the right stream after Class 10. The career counseling showed me that BiPC suits my interest in biology and chemistry. The stream recommendations were so helpful for my future planning!',
       college: 'Selecting Junior College',
@@ -132,7 +132,7 @@ const Home: React.FC = () => {
     {
       name: 'Venkata Ramana',
       role: 'Class 12 Student, Gayatri Educational Institutions, Vizag',
-      avatar: '/avatars/ramana.jpg',
+      avatar: `${import.meta.env.BASE_URL}avatars/ramana.jpg`,
       rating: 5,
       text: 'With my EAMCET rank of 8,450, I was confused about which engineering colleges I could get. CareerVista\'s college predictor showed me all possible colleges for my rank in MPC stream. Very accurate predictions!',
       college: 'Engineering College Prediction',
@@ -141,7 +141,7 @@ const Home: React.FC = () => {
     {
       name: 'Anusha Kumari',
       role: 'Class 12 Student, Akash Institute, Tirupati',
-      avatar: '/avatars/anusha.jpg',
+      avatar: `${import.meta.env.BASE_URL}avatars/anusha.jpg`,
       rating: 5,
       text: 'After getting my NEET rank of 15,200, I used CareerVista to predict which medical colleges I could get admission in. The rank-based predictions helped me choose the right colleges during counseling!',
       college: 'Medical College Prediction',
@@ -150,7 +150,7 @@ const Home: React.FC = () => {
     {
       name: 'Kiran Kumar Yadav',
       role: 'Class 10 Student, Vignan Schools, Kakinada',
-      avatar: '/avatars/kiran.jpg',
+      avatar: `${import.meta.env.BASE_URL}avatars/kiran.jpg`,
       rating: 5,
       text: 'I was interested in computers but didn\'t know which stream to choose after SSC. CareerVista\'s stream recommendation test showed me that MPC with computer science is perfect for my software engineering goals!',
       college: 'Planning Intermediate',
@@ -159,7 +159,7 @@ const Home: React.FC = () => {
     {
       name: 'Deepika Chowdary',
       role: 'Class 12 Student, Bhashyam Educational Institutions, Hyderabad',
-      avatar: '/avatars/deepika.jpg',
+      avatar: `${import.meta.env.BASE_URL}avatars/deepika.jpg`,
       rating: 5,
       text: 'After completing my Class 12 in CEC stream, I was confused about which commerce colleges to choose. CareerVista\'s college predictor helped me find the best B.Com and BBA colleges in AP based on my marks and preferences!',
       college: 'Commerce College Selection',
@@ -595,8 +595,9 @@ const Home: React.FC = () => {
                   </Box>
 
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                    <Avatar
+                    <SafeAvatar
                       src={testimonials[currentTestimonial].avatar}
+                      alt={testimonials[currentTestimonial].name}
                       sx={{
                         width: 60,
                         height: 60,
@@ -664,8 +665,9 @@ const Home: React.FC = () => {
                   >
                     <CardContent sx={{ p: 2 }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                        <Avatar
+                        <SafeAvatar
                           src={testimonial.avatar}
+                          alt={testimonial.name}
                           sx={{
                             width: 40,
                             height: 40,
