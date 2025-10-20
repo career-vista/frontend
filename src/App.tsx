@@ -19,7 +19,6 @@ import {
 import { Psychology, Close } from '@mui/icons-material'
 import { useTheme } from '@mui/material/styles'
 import Footer from './pages/layout/footer'
-import DemoModeBanner from './components/DemoModeBanner'
 import Header from './pages/layout/header'
 import RegisterPage from './pages/auth/register'
 import SignInPage from './pages/auth/login'
@@ -108,7 +107,6 @@ function AppContent() {
 
   return (
     <>
-      <DemoModeBanner />
       <Suspense fallback={
         <Box 
           sx={{ 
