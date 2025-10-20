@@ -206,6 +206,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setLoading(true)
       setError(null)
 
+      // Check if running on GitHub Pages (demo mode)
+      const isGitHubPages = window.location.hostname.includes('github.io')
+      if (isGitHubPages) {
+        console.warn('🚨 [Google Auth] Demo mode detected - Google OAuth disabled')
+        throw new Error('Google authentication is disabled in demo mode. Please run locally for full functionality.')
+      }
+
       const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
       console.log('🔍 [Google Auth] Client ID:', clientId ? 'Found' : 'Missing')
       

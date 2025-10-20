@@ -32,6 +32,9 @@ const SignInPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { loginWithGoogle } = useAuth()
+  
+  // Check if running in demo mode (GitHub Pages)
+  const isGitHubPages = window.location.hostname.includes('github.io')
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -174,10 +177,10 @@ const SignInPage = () => {
               size="large"
               startIcon={<GoogleIcon />}
               onClick={handleGoogleLogin}
-              disabled={isSubmitting}
+              disabled={isSubmitting || isGitHubPages}
               sx={{
                 py: 1.5,
-                mb: 3,
+                mb: isGitHubPages ? 1 : 3,
                 borderRadius: '12px',
                 textTransform: 'none',
                 fontSize: '1rem',
@@ -191,6 +194,24 @@ const SignInPage = () => {
             >
               Continue with Google
             </Button>
+
+            {/* Demo Mode Notice */}
+            {isGitHubPages && (
+              <Typography
+                variant="body2"
+                color="warning.main"
+                sx={{
+                  mb: 3,
+                  p: 2,
+                  bgcolor: 'warning.light',
+                  borderRadius: '8px',
+                  textAlign: 'center',
+                  fontWeight: 500
+                }}
+              >
+                🚨 Google Auth disabled in demo mode. Clone and run locally for full functionality.
+              </Typography>
+            )}
 
             <Box sx={{ display: 'flex', alignItems: 'center', my: 3 }}>
               <Divider sx={{ flexGrow: 1 }} />
