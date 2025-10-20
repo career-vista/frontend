@@ -10,17 +10,17 @@
         const path = window.location.pathname.slice(1);
         if (path) {
             window.location.replace(
-                window.location.origin + '/proj1/?redirect=' + encodeURIComponent(path)
+                window.location.origin + '/frontend/?redirect=' + encodeURIComponent(path)
             );
         } else {
-            window.location.replace(window.location.origin + '/proj1/');
+            window.location.replace(window.location.origin + '/frontend/');
         }
     </script>
 </head>
 <body>
     <div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;">
         <h2>Redirecting...</h2>
-        <p>If you're not automatically redirected, <a href="/proj1/">click here</a>.</p>
+        <p>If you're not automatically redirected, <a href="/frontend/">click here</a>.</p>
     </div>
 </body>
 </html>

@@ -10,7 +10,7 @@ export default defineConfig(({ mode, command }) => {
   
   // Determine base URL based on environment
   const base = command === 'build' && process.env.GITHUB_PAGES 
-    ? '/proj1/' 
+    ? '/frontend/' 
     : '/'
   
   return {
